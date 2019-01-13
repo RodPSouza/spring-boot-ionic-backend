@@ -1,12 +1,31 @@
 package com.nelioalves.curso_mc;
 
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.nelioalves.curso_mc.domain.Categoria;
+import com.nelioalves.curso_mc.repositories.CategoriaRepository;
+
 @SpringBootApplication
-public class CursoMcApplication {
+public class CursoMcApplication implements CommandLineRunner {
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursoMcApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		Categoria cat1 = new Categoria(null, "Informática 2 ");
+		Categoria cat2 = new Categoria(null, "Escritório 2");
+		
+		categoriaRepository.save(Arrays.asList(cat1,cat2));
+		
 	}
 }
