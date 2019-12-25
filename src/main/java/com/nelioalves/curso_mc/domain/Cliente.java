@@ -39,6 +39,8 @@ public class Cliente implements Serializable{
 	@CollectionTable(name="TELEFONE")
 	//Set não se repete
 	private Set<String> telefones = new HashSet<>();
+
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente() {
 	}
