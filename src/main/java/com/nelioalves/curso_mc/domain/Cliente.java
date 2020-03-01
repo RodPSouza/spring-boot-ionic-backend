@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nelioalves.curso_mc.enums.TipoCliente;
 
@@ -34,6 +35,7 @@ public class Cliente implements Serializable{
 	//Set não se repete
 	private Set<String> telefones = new HashSet<>();
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
