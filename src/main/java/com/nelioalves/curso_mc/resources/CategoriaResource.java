@@ -1,5 +1,6 @@
 package com.nelioalves.curso_mc.resources;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import com.nelioalves.curso_mc.domain.Categoria;
 import com.nelioalves.curso_mc.services.CategoriaService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value="/categorias")
@@ -27,6 +29,15 @@ public class CategoriaResource {
 		Categoria obj = service.buscar(id);
 		
 		return ResponseEntity.ok().body(obj);
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(Categoria obj){
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 	
 }
