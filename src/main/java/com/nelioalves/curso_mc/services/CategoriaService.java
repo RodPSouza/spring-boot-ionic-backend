@@ -9,6 +9,7 @@ import com.nelioalves.curso_mc.domain.Categoria;
 import com.nelioalves.curso_mc.repositories.CategoriaRepository;
 import com.nelioalves.curso_mc.services.exceptions.ObjectNotFoundException;
 
+import java.util.List;
 
 
 @Service
@@ -42,8 +43,10 @@ public class CategoriaService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possivel  excluir  uma categoria  que possui produtos!");
 		}
+	}
 
-
+	public List<Categoria> findAll() {
+		return repo.findAll();
 	}
 
 }
