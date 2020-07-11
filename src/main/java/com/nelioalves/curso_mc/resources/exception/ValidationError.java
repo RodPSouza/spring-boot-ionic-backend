@@ -1,6 +1,5 @@
 package com.nelioalves.curso_mc.resources.exception;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
