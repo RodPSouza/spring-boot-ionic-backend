@@ -4,9 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.nelioalves.curso_mc.domain.Categoria;
 import com.nelioalves.curso_mc.domain.Cliente;
-import com.nelioalves.curso_mc.dto.CategoriaDTO;
 import com.nelioalves.curso_mc.dto.ClienteDTO;
 import com.nelioalves.curso_mc.dto.ClienteNewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.nelioalves.curso_mc.services.ClienteService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.validation.Valid;
 
 @RestController
