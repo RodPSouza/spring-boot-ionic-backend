@@ -6,7 +6,6 @@ import com.nelioalves.curso_mc.domain.Endereco;
 import com.nelioalves.curso_mc.dto.ClienteDTO;
 import com.nelioalves.curso_mc.dto.ClienteNewDTO;
 import com.nelioalves.curso_mc.enums.TipoCliente;
-import com.nelioalves.curso_mc.repositories.CidadeRepository;
 import com.nelioalves.curso_mc.repositories.EnderecoRepository;
 import com.nelioalves.curso_mc.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import com.nelioalves.curso_mc.domain.Cliente;
 import com.nelioalves.curso_mc.repositories.ClienteRepository;
 import com.nelioalves.curso_mc.services.exceptions.ObjectNotFoundException;
 
