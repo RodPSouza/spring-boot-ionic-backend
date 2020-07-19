@@ -6,8 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import com.nelioalves.curso_mc.domain.Cidade;
 import com.nelioalves.curso_mc.domain.Cliente;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
+    @Transactional(readOnly=true)
+    Cliente findByEmail(String email);
 
 }
