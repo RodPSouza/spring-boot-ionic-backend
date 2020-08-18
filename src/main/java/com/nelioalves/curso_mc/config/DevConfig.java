@@ -1,6 +1,8 @@
 package com.nelioalves.curso_mc.config;
 
 import com.nelioalves.curso_mc.services.DBService;
+import com.nelioalves.curso_mc.services.EmailService;
+import com.nelioalves.curso_mc.services.MockEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +30,11 @@ public class DevConfig {
 
         dbService.instantiateTestDatabase();
         return true;
+    }
+
+    @Bean
+    public EmailService emailService(){
+        return new MockEmailService();
     }
 
 }
