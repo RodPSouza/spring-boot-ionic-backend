@@ -3,9 +3,11 @@ package com.nelioalves.curso_mc.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 
+@Service
 public class MockEmailService extends AbstractEmailService {
 
     private static final Logger LOG = LoggerFactory.getLogger(MockEmailService.class);
