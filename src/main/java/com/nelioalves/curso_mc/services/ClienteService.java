@@ -5,8 +5,11 @@ import com.nelioalves.curso_mc.domain.Cliente;
 import com.nelioalves.curso_mc.domain.Endereco;
 import com.nelioalves.curso_mc.dto.ClienteDTO;
 import com.nelioalves.curso_mc.dto.ClienteNewDTO;
+import com.nelioalves.curso_mc.enums.Perfil;
 import com.nelioalves.curso_mc.enums.TipoCliente;
 import com.nelioalves.curso_mc.repositories.EnderecoRepository;
+import com.nelioalves.curso_mc.security.UserSS;
+import com.nelioalves.curso_mc.services.exceptions.AuthorizationException;
 import com.nelioalves.curso_mc.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -35,6 +38,12 @@ public class ClienteService {
 
 	
 	public Cliente find(Integer id) throws ObjectNotFoundException {
+
+		UserSS user = UserService.authenticaded();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+			throw new AuthorizationException("Acesso negado");
+		}
+
 		Cliente obj = repo.findOne(id);
 		if(obj == null) {
 			throw new ObjectNotFoundException("Objeto nao encontrado. Id " + id + ", Tipo " + Cliente.class.getName());
