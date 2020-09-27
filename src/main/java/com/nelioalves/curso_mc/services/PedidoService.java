@@ -1,14 +1,18 @@
 package com.nelioalves.curso_mc.services;
 
-import com.nelioalves.curso_mc.domain.ItemPedido;
-import com.nelioalves.curso_mc.domain.PagamentoComBoleto;
-import com.nelioalves.curso_mc.domain.Pedido;
+import com.nelioalves.curso_mc.domain.*;
 import com.nelioalves.curso_mc.enums.EstadoPagamento;
 import com.nelioalves.curso_mc.repositories.*;
+import com.nelioalves.curso_mc.security.UserSS;
+import com.nelioalves.curso_mc.services.exceptions.AuthorizationException;
 import com.nelioalves.curso_mc.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.Date;
 
 @Service
@@ -65,5 +69,16 @@ public class PedidoService {
 		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
+
+	/*
+	public Page<Pedido> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
+		UserSS user = UserService.authenticaded();
+		if (user == null){
+			throw new AuthorizationException("Acesso negado");
+		}
+		Pageable pageRequest = (Pageable) new PageRequest(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
+		Cliente cliente = clienteRepository.findOne(user.getId());
+		return repo.findByCliente(cliente, pageRequest);
+	}*/
 
 }
