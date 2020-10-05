@@ -32,6 +32,7 @@ public class PedidoResource {
 				.buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+
 	/*
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<Pedido>> findPage(
